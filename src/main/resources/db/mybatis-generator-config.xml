@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="db/mybatis-generator-config.properties"/>
+
+    <context id="mbgConfig" defaultModelType="flat" targetRuntime="MyBatis3Simple">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="autoDelimitKeywords" value="false"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="constructorBased" value="false"/>
+            <property name="enableSubPackages" value="false"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="${mbg.jdbc.url}"
+                        userId="${mbg.jdbc.username}"
+                        password="${mbg.jdbc.password}">
+            <property name="useInformationSchema" value="true"/>
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.fuqqqq.common.area.cn.data.model" targetProject="src/main/java">
+            <property name="rootClass" value="com.fuqqqq.common.area.cn.data.model.base.BaseModel"/>
+            <property name="immutable" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.fuqqqq.common.area.cn.data.mapper" targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.fuqqqq.common.area.cn.data.mapper" targetProject="src/main/java" type="ANNOTATEDMAPPER">
+            <property name="rootInterface" value="com.fuqqqq.common.area.cn.data.mapper.base.BaseMapper"/>
+        </javaClientGenerator>
+
+
+        <table tableName="t_area" domainObjectName="TAreaModel" mapperName="TAreaMapper"
+               delimitIdentifiers="true" delimitAllColumns="true"
+               enableDeleteByPrimaryKey="false"
+               enableInsert="false"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="false">
+            <property name="selectAllOrderByClause" value="`_code` ASC"/>
+        </table>
+    </context>
+
+</generatorConfiguration>
